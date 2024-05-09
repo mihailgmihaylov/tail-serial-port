@@ -1,0 +1,10 @@
+stages:
+  - build
+
+build:
+  stage: build
+  script:
+    - python tail-serial-port.py -p /dev/ttys001 -o output.txt
+  artifacts:
+    paths:
+      - output.txt
