@@ -120,7 +120,7 @@ options:
 
 ## Example gitlab-ci
 
-You can fine an example of a .gitlab-ci in [.gitlab-ci](.gitlab.ci).
+You can fine an example of a .gitlab-ci in [.gitlab-ci.yml](.gitlab-ci.yml).
 
 Just be mindful that you probably need to change the file and port parameters.
 
