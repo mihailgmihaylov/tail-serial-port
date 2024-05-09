@@ -73,6 +73,20 @@ If you want to simulate a Serial port, there are different ways to do so. One is
 socat -d -d -b 8192 pty,raw,echo=0,b115200,parenb=0,stop=1 pty,raw,echo=0,b115200,parenb=0,stop=1
 ```
 
+## How to build container
+
+If you like to build it locally and test, simply:
+```
+docker build -t tail-serail-port:v0.0.1 .
+```
+
+If you like to build the container to support multi-arch and push it to a repository:
+
+```
+docker buildx build --push --platform linux/amd64 -t mihailgmihaylov/tail-serail-port:v0.0.1 .
+docker buildx build --push --platform linux/arm64/v8 -t mihailgmihaylov/tail-serail-port:v0.0.1 .
+```
+
 ## Sources
 
 https://pyserial.readthedocs.io/en/latest/shortintro.html
