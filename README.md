@@ -73,6 +73,51 @@ If you want to simulate a Serial port, there are different ways to do so. One is
 socat -d -d -b 8192 pty,raw,echo=0,b115200,parenb=0,stop=1 pty,raw,echo=0,b115200,parenb=0,stop=1
 ```
 
+## How to build container
+
+If you like to build it locally and test, simply:
+```
+docker build -t tail-serail-port:v0.0.1 .
+```
+
+If you like to build the container to support multi-arch and push it to a repository:
+
+```
+docker buildx build --push --platform linux/amd64 -t mihailgmihaylov/tail-serail-port:v0.0.1 .
+docker buildx build --push --platform linux/arm64/v8 -t mihailgmihaylov/tail-serail-port:v0.0.1 .
+```
+
+## How to use the container
+
+You can use it almost the same way as the script itself.
+The Entrypoint of the containmer is actually the script so:
+
+```
+docker run -ti <image>:<version> <flags>
+```
+
+Example:
+```
+docker run -ti tail-serail-port:v0.0.1 --help                                                                                                                                                                                         <aws:mine>
+usage: tail-serial-port.py [-h] [-p PORT] [-o OUTPUT] [-b BYTESIZE] [-brate BAUDRATE] [-pa PARITY] [-s STOPBITS]
+
+Collecting logs over a serial port.
+
+options:
+  -h, --help            show this help message and exit
+  -p PORT, --port PORT  Serial port name (e.g., /dev/pts/2)
+  -o OUTPUT, --output OUTPUT
+                        File to store the logs (e.g., -o=serial_data.txt)
+  -b BYTESIZE, --bytesize BYTESIZE
+                        Set serial bytesize (e.g., -b=8)
+  -brate BAUDRATE, --baudrate BAUDRATE
+                        Set serial baudrate (e.g., -brate=8)
+  -pa PARITY, --parity PARITY
+                        Set serial parity (e.g., -brate=8)
+  -s STOPBITS, --stopbits STOPBITS
+                        Set serial stopbits (e.g., -s=1)
+```
+
 ## Sources
 
 https://pyserial.readthedocs.io/en/latest/shortintro.html
