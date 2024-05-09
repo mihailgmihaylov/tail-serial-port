@@ -118,6 +118,12 @@ options:
                         Set serial stopbits (e.g., -s=1)
 ```
 
+## Example gitlab-ci
+
+You can fine an example of a .gitlab-ci in [.gitlab-ci](.gitlab.ci).
+
+Just be mindful that you probably need to change the file and port parameters.
+
 ## Sources
 
 https://pyserial.readthedocs.io/en/latest/shortintro.html
